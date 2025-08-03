@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>비밀번호 확인(삭제)</title>
+</head>
+<body>
+<h2>비밀번호 확인(삭제)</h2>
+<div th:if="${error}" th:text="${error}" style="color:red;"></div>
+<form th:action="@{/delete/check/{id}(id=${board.id})}" method="post">
+  <input type="password" name="boardPass" placeholder="비밀번호 입력" required>
+  <input type="submit" value="확인">
+</form>
+<a th:href="@{/detail/{id}(id=${board.id})}">취소</a>
+</body>
+</html>

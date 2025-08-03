@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>게시글 상세</title>
+</head>
+<body>
+<h2>게시글 상세</h2>
+<div>
+    <strong>제목:</strong> <span th:text="${board.boardTitle}"></span><br>
+    <strong>작성자:</strong> <span th:text="${board.boardWriter}"></span><br>
+    <strong>작성일:</strong> <span th:text="${#dates.format(board.createdAt, 'yyyy-MM-dd HH:mm')}"></span><br>
+    <strong>조회수:</strong> <span th:text="${board.boardHits}"></span><br>
+    <a th:href="@{/edit/check/{id}(id=${board.id})}">글 수정</a>
+    <a th:href="@{/delete/check/{id}(id=${board.id})}">글 삭제</a>
+    <hr>
+    <strong>내용:</strong><br>
+    <pre th:text="${board.boardContents}"></pre>
+</div>
+<a href="/list">목록으로</a>
+</body>
+</html>

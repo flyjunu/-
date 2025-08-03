@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>게시글 목록</title>
+  <style>
+    .row { margin-bottom: 8px; }
+    .col-id { display: inline-block; width: 60px; }
+    .col-title { display: inline-block; width: 150px; }
+    .col-writer { display: inline-block; width: 80px; }
+    .col-date { display: inline-block; width: 160px; }
+    .header { font-weight: bold; }
+    .header .col-id,
+    .header .col-title,
+    .header .col-writer,
+    .header .col-date {
+      text-align: center;
+    }
+    a.col-title { color: blue; text-decoration: underline; }
+  </style>
+</head>
+<body>
+<h2>게시글 목록</h2>
+<div>
+  <div class="row header">
+    <span class="col-id">글 번호</span> |
+    <span class="col-title">제목</span> |
+    <span class="col-writer">작성자</span> |
+    <span class="col-date">작성일</span>
+  </div>
+  <div th:each="board : ${boardList}" class="row">
+    <span class="col-id" th:text="${board.id}"></span> |
+    <a class="col-title" th:href="@{/detail/{id}(id=${board.id})}" th:text="${board.boardTitle}"></a> |
+    <span class="col-writer" th:text="${board.boardWriter}"></span> |
+    <span class="col-date" th:text="${#dates.format(board.createdAt, 'yyyy-MM-dd HH:mm')}"></span>
+  </div>
+</div>
+<a href="/save">글 작성</a>
+</body>
+</html>
