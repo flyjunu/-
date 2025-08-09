@@ -18,11 +18,11 @@ import java.util.List;
 public class BoardService {
     private final BoardRepository boardRepository;
 
-    @GetMapping("/save")
+    
     public String save() {return "save";}
 
-    @PostMapping("/save")
-    public String save(@ModelAttribute BoardDTO boardDTO) {
+    
+    public String save(BoardDTO boardDTO) {
         BoardEntity entity = BoardEntity.toEntity(boardDTO);
         boardRepository.save(entity);
         return "index";
@@ -66,3 +66,4 @@ public class BoardService {
         boardRepository.deleteById(id);
     }
 }
+
