@@ -17,7 +17,8 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/save")
-    public String saveForm() {
+    public String saveForm(Model model) {
+        model.addAttribute("board", new BoardDTO());
         return "save";
     }
 
@@ -109,3 +110,4 @@ public class BoardController {
     }
 
 }
+
